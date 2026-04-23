@@ -11,6 +11,7 @@ ROOT = Path(".")
 EVIDENCE_DIR = ROOT / "docs" / "evidence"
 REPORT_MD = ROOT / "docs" / "research_report.md"
 REQUIREMENTS_MD = ROOT / "docs" / "requirement_coverage.md"
+OVERVIEW_MD = ROOT / "docs" / "project_overview.md"
 DOCX_PATH = ROOT / "docs" / "research_report.docx"
 
 
@@ -27,10 +28,13 @@ def main():
     )
 
     document.add_heading("Overview", level=1)
-    document.add_paragraph(REPORT_MD.read_text(encoding="utf-8")[:3000])
+    document.add_paragraph(REPORT_MD.read_text(encoding="utf-8")[:6000])
+
+    document.add_heading("Complete Project Walkthrough", level=1)
+    document.add_paragraph(OVERVIEW_MD.read_text(encoding="utf-8"))
 
     document.add_heading("Requirement Coverage", level=1)
-    document.add_paragraph(REQUIREMENTS_MD.read_text(encoding="utf-8")[:4000])
+    document.add_paragraph(REQUIREMENTS_MD.read_text(encoding="utf-8")[:8000])
 
     metrics_path = ROOT / "artifacts" / "metrics_summary.json"
     if metrics_path.exists():
