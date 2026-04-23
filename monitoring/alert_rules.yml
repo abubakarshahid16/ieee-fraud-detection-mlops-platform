@@ -1,0 +1,29 @@
+groups:
+  - name: fraud-mlops-alerts
+    rules:
+      - alert: FraudRecallDrop
+        expr: fraud_model_recall < 0.85
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Fraud recall dropped below threshold
+          action: Trigger GitHub Actions retraining workflow
+
+      - alert: FraudDataDriftExceeded
+        expr: fraud_data_drift_score > 0.15
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Data drift exceeded allowed limit
+          action: Trigger Kubeflow retraining pipeline
+
+      - alert: FraudApiLatencySpike
+        expr: histogram_quantile(0.95, sum(rate(fraud_api_request_latency_seconds_bucket[5m])) by (le)) > 1
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: P95 API latency exceeded one second
+          action: Scale service and notify CI/CD

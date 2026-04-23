@@ -1,0 +1,16 @@
+Monitoring live stack
+---------------------
+Prometheus:
+- Container running on port 9090
+- Target fraud-inference-api-local scraped successfully
+- Query fraud_api_requests_total returned live metric data
+Alertmanager:
+- Container running on port 9093
+- Forwarded firing alert to Jenkins webhook
+Grafana:
+- Container running on port 3000
+- Health endpoint returned database OK
+- Dashboards provisioned:
+  * System Health Dashboard
+  * Model Performance Dashboard
+  * Data Drift Dashboard

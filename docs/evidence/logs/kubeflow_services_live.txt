@@ -1,0 +1,11 @@
+NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                                                   AGE   SELECTOR
+cache-server                      ClusterIP   10.96.225.147   <none>        443/TCP                                                   14h   app=cache-server,application-crd-id=kubeflow-pipelines
+controller-manager-service        ClusterIP   10.96.25.166    <none>        443/TCP                                                   14h   application-crd-id=kubeflow-pipelines,control-plane=controller-manager,controller-tools.k8s.io=1.0
+metadata-envoy-service            ClusterIP   10.96.81.157    <none>        9090/TCP                                                  14h   application-crd-id=kubeflow-pipelines,component=metadata-envoy
+metadata-grpc-service             ClusterIP   10.96.71.213    <none>        8080/TCP                                                  14h   application-crd-id=kubeflow-pipelines,component=metadata-grpc-server
+minio-service                     ClusterIP   10.96.121.161   <none>        9000/TCP                                                  14h   app=seaweedfs,application-crd-id=kubeflow-pipelines
+ml-pipeline                       ClusterIP   10.96.138.60    <none>        8888/TCP,8887/TCP                                         14h   app=ml-pipeline,application-crd-id=kubeflow-pipelines
+ml-pipeline-ui                    ClusterIP   10.96.12.194    <none>        80/TCP                                                    14h   app=ml-pipeline-ui,application-crd-id=kubeflow-pipelines
+ml-pipeline-visualizationserver   ClusterIP   10.96.166.34    <none>        8888/TCP                                                  14h   app=ml-pipeline-visualizationserver,application-crd-id=kubeflow-pipelines
+mysql                             ClusterIP   10.96.48.175    <none>        3306/TCP                                                  14h   app=mysql,application-crd-id=kubeflow-pipelines
+seaweedfs                         ClusterIP   10.96.232.105   <none>        8111/TCP,8333/TCP,9333/TCP,19333/TCP,18888/TCP,8888/TCP   14h   app=seaweedfs,application-crd-id=kubeflow-pipelines

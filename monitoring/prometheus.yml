@@ -1,0 +1,14 @@
+global:
+  scrape_interval: 15s
+
+rule_files:
+  - alert_rules.yml
+
+scrape_configs:
+  - job_name: fraud-inference-api
+    static_configs:
+      - targets: ["fraud-inference-api.fraud-mlops.svc.cluster.local:8000"]
+
+  - job_name: kubernetes-nodes
+    static_configs:
+      - targets: ["kube-state-metrics.kube-system.svc.cluster.local:8080"]

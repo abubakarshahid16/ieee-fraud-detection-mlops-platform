@@ -1,0 +1,25 @@
+{
+  "title": "Data Drift Dashboard",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Overall Drift Score",
+      "targets": [
+        {
+          "expr": "fraud_data_drift_score"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Missing Value Ratio",
+      "targets": [
+        {
+          "expr": "fraud_missing_value_ratio"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}

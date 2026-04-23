@@ -1,0 +1,15 @@
+Kubernetes live deployment
+--------------------------
+Cluster type: kind
+Cluster name: fraud-mlops
+Namespace: fraud-mlops
+Status:
+- Namespace applied
+- ResourceQuota applied
+- PV and PVC applied
+- Deployment rolled out successfully
+- Service created successfully
+- In-cluster API health check via port-forward returned {"status":"ok"}
+Deployment summary:
+- fraud-inference-api replicas: 2/2 available
+- Service: ClusterIP on port 8000

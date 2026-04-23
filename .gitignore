@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.pytest-tmp/
+.tmp/
+.pip-cache/
+pytest-cache-files*/
+
+# Large/generated data and model artifacts
+data/*.csv
+artifacts/*.joblib
+artifacts/shap_error.json
+submission_package/
+submission_package.zip
+
+# Local infrastructure binaries/configs
+kind.exe
+kind-kubeconfig
+jenkins-cli.jar
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/

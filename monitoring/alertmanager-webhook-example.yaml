@@ -1,0 +1,9 @@
+receivers:
+  - name: github-actions-webhook
+    webhook_configs:
+      - url: https://api.github.com/repos/OWNER/REPO/dispatches
+        http_config:
+          bearer_token: ${GITHUB_TOKEN}
+
+route:
+  receiver: github-actions-webhook

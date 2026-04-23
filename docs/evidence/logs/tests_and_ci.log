@@ -1,0 +1,17 @@
+CI/CD live evidence
+-------------------
+CI/CD engine used: Jenkins
+Jenkins container: fraud-jenkins
+Jenkins job: fraud-mlops-pipeline
+Real build status: SUCCESS
+Webhook trigger: /generic-webhook-trigger/invoke?token=fraud-alert-token
+Alertmanager integration: monitoring/alertmanager-local.yml
+Evidence logs:
+- jenkins_console.log
+- jenkins_alertmanager_console.log
+- jenkins_last_build.json
+- jenkins_alertmanager_last_build.json
+Docker evidence:
+- training image built
+- inference API image built
+- images pushed to localhost:5000 local registry

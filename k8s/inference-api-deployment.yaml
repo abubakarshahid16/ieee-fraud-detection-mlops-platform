@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fraud-inference-api
+  namespace: fraud-mlops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fraud-inference-api
+  template:
+    metadata:
+      labels:
+        app: fraud-inference-api
+    spec:
+      containers:
+        - name: api
+          image: docker.io/library/fraud-inference-api:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fraud-inference-api
+  namespace: fraud-mlops
+spec:
+  selector:
+    app: fraud-inference-api
+  ports:
+    - port: 8000
+      targetPort: 8000
+  type: ClusterIP

@@ -1,0 +1,803 @@
+{'created_at': datetime.datetime(2026, 4, 23, 4, 47, 19, tzinfo=tzutc()),
+ 'description': None,
+ 'display_name': 'fraud-detection-live-run',
+ 'error': None,
+ 'experiment_id': '5dd4540a-6552-490e-a2ef-c192a530ee08',
+ 'finished_at': datetime.datetime(1970, 1, 1, 0, 0, tzinfo=tzutc()),
+ 'pipeline_spec': {'components': {'comp-condition-1': {'dag': {'tasks': {'conditional-deployment': {'cachingOptions': {'enableCache': True},
+                                                                                                    'componentRef': {'name': 'comp-conditional-deployment'},
+                                                                                                    'inputs': {'parameters': {'auc_score': {'componentInputParameter': 'pipelinechannel--model-evaluation-Output'}}},
+                                                                                                    'retryPolicy': {'backoffDuration': '0s',
+                                                                                                                    'backoffFactor': 2,
+                                                                                                                    'backoffMaxDuration': '3600s',
+                                                                                                                    'maxRetryCount': 1},
+                                                                                                    'taskInfo': {'name': 'conditional-deployment'}}}},
+                                                       'inputDefinitions': {'parameters': {'pipelinechannel--deploy_auc_threshold': {'parameterType': 'NUMBER_DOUBLE'},
+                                                                                           'pipelinechannel--model-evaluation-Output': {'parameterType': 'NUMBER_DOUBLE'}}}},
+                                  'comp-conditional-deployment': {'executorLabel': 'exec-conditional-deployment',
+                                                                  'inputDefinitions': {'parameters': {'auc_score': {'parameterType': 'NUMBER_DOUBLE'}}},
+                                                                  'outputDefinitions': {'parameters': {'Output': {'parameterType': 'STRING'}}}},
+                                  'comp-data-ingestion': {'executorLabel': 'exec-data-ingestion',
+                                                          'outputDefinitions': {'parameters': {'Output': {'parameterType': 'STRING'}}}},
+                                  'comp-data-preprocessing': {'executorLabel': 'exec-data-preprocessing',
+                                                              'inputDefinitions': {'parameters': {'validation_status': {'parameterType': 'STRING'}}},
+                                                              'outputDefinitions': {'parameters': {'Output': {'parameterType': 'STRING'}}}},
+                                  'comp-data-validation': {'executorLabel': 'exec-data-validation',
+                                                           'inputDefinitions': {'parameters': {'ingestion_status': {'parameterType': 'STRING'}}},
+                                                           'outputDefinitions': {'parameters': {'Output': {'parameterType': 'STRING'}}}},
+                                  'comp-feature-engineering': {'executorLabel': 'exec-feature-engineering',
+                                                               'inputDefinitions': {'parameters': {'preprocessing_status': {'parameterType': 'STRING'}}},
+                                                               'outputDefinitions': {'parameters': {'Output': {'parameterType': 'STRING'}}}},
+                                  'comp-model-evaluation': {'executorLabel': 'exec-model-evaluation',
+                                                            'inputDefinitions': {'parameters': {'training_status': {'parameterType': 'STRING'}}},
+                                                            'outputDefinitions': {'parameters': {'Output': {'parameterType': 'NUMBER_DOUBLE'}}}},
+                                  'comp-model-training': {'executorLabel': 'exec-model-training',
+                                                          'inputDefinitions': {'parameters': {'feature_status': {'parameterType': 'STRING'}}},
+                                                          'outputDefinitions': {'parameters': {'Output': {'parameterType': 'STRING'}}}}},
+                   'deploymentSpec': {'executors': {'exec-conditional-deployment': {'container': {'args': ['--executor_input',
+                                                                                                           '{{$}}',
+                                                                                                           '--function_to_execute',
+                                                                                                           'conditional_deployment'],
+                                                                                                  'command': ['sh',
+                                                                                                              '-c',
+                                                                                                              '\n'
+                                                                                                              'if '
+                                                                                                              '! '
+                                                                                                              '[ '
+                                                                                                              '-x '
+                                                                                                              '"$(command '
+                                                                                                              '-v '
+                                                                                                              'pip)" '
+                                                                                                              ']; '
+                                                                                                              'then\n'
+                                                                                                              '    '
+                                                                                                              'python3 '
+                                                                                                              '-m '
+                                                                                                              'ensurepip '
+                                                                                                              '|| '
+                                                                                                              'python3 '
+                                                                                                              '-m '
+                                                                                                              'ensurepip '
+                                                                                                              '--user '
+                                                                                                              '|| '
+                                                                                                              'apt-get '
+                                                                                                              'install '
+                                                                                                              'python3-pip\n'
+                                                                                                              'fi\n'
+                                                                                                              '\n'
+                                                                                                              'PIP_DISABLE_PIP_VERSION_CHECK=1 '
+                                                                                                              'python3 '
+                                                                                                              '-m '
+                                                                                                              'pip '
+                                                                                                              'install '
+                                                                                                              '--quiet '
+                                                                                                              '--no-warn-script-location '
+                                                                                                              "'kfp==2.8.0' "
+                                                                                                              "'--no-deps' "
+                                                                                                              "'typing-extensions>=3.7.4,<5; "
+                                                                                                              'python_version<"3.9"\' '
+                                                                                                              '&& '
+                                                                                                              '"$0" '
+                                                                                                              '"$@"\n',
+                                                                                                              'sh',
+                                                                                                              '-ec',
+                                                                                                              'program_path=$(mktemp '
+                                                                                                              '-d)\n'
+                                                                                                              '\n'
+                                                                                                              'printf '
+                                                                                                              '"%s" '
+                                                                                                              '"$0" '
+                                                                                                              '> '
+                                                                                                              '"$program_path/ephemeral_component.py"\n'
+                                                                                                              '_KFP_RUNTIME=true '
+                                                                                                              'python3 '
+                                                                                                              '-m '
+                                                                                                              'kfp.dsl.executor_main                         '
+                                                                                                              '--component_module_path                         '
+                                                                                                              '"$program_path/ephemeral_component.py"                         '
+                                                                                                              '"$@"\n',
+                                                                                                              '\n'
+                                                                                                              'import '
+                                                                                                              'kfp\n'
+                                                                                                              'from '
+                                                                                                              'kfp '
+                                                                                                              'import '
+                                                                                                              'dsl\n'
+                                                                                                              'from '
+                                                                                                              'kfp.dsl '
+                                                                                                              'import '
+                                                                                                              '*\n'
+                                                                                                              'from '
+                                                                                                              'typing '
+                                                                                                              'import '
+                                                                                                              '*\n'
+                                                                                                              '\n'
+                                                                                                              'def '
+                                                                                                              'conditional_deployment(auc_score: '
+                                                                                                              'float) '
+                                                                                                              '-> '
+                                                                                                              'str:\n'
+                                                                                                              '    '
+                                                                                                              'return '
+                                                                                                              'f"Deployment '
+                                                                                                              'approved '
+                                                                                                              'with '
+                                                                                                              'AUC={auc_score}"\n'
+                                                                                                              '\n'],
+                                                                                                  'image': 'python:3.11-slim'}},
+                                                    'exec-data-ingestion': {'container': {'args': ['--executor_input',
+                                                                                                   '{{$}}',
+                                                                                                   '--function_to_execute',
+                                                                                                   'data_ingestion'],
+                                                                                          'command': ['sh',
+                                                                                                      '-c',
+                                                                                                      '\n'
+                                                                                                      'if '
+                                                                                                      '! '
+                                                                                                      '[ '
+                                                                                                      '-x '
+                                                                                                      '"$(command '
+                                                                                                      '-v '
+                                                                                                      'pip)" '
+                                                                                                      ']; '
+                                                                                                      'then\n'
+                                                                                                      '    '
+                                                                                                      'python3 '
+                                                                                                      '-m '
+                                                                                                      'ensurepip '
+                                                                                                      '|| '
+                                                                                                      'python3 '
+                                                                                                      '-m '
+                                                                                                      'ensurepip '
+                                                                                                      '--user '
+                                                                                                      '|| '
+                                                                                                      'apt-get '
+                                                                                                      'install '
+                                                                                                      'python3-pip\n'
+                                                                                                      'fi\n'
+                                                                                                      '\n'
+                                                                                                      'PIP_DISABLE_PIP_VERSION_CHECK=1 '
+                                                                                                      'python3 '
+                                                                                                      '-m '
+                                                                                                      'pip '
+                                                                                                      'install '
+                                                                                                      '--quiet '
+                                                                                                      '--no-warn-script-location '
+                                                                                                      "'kfp==2.8.0' "
+                                                                                                      "'--no-deps' "
+                                                                                                      "'typing-extensions>=3.7.4,<5; "
+                                                                                                      'python_version<"3.9"\' '
+                                                                                                      '&& '
+                                                                                                      '"$0" '
+                                                                                                      '"$@"\n',
+                                                                                                      'sh',
+                                                                                                      '-ec',
+                                                                                                      'program_path=$(mktemp '
+                                                                                                      '-d)\n'
+                                                                                                      '\n'
+                                                                                                      'printf '
+                                                                                                      '"%s" '
+                                                                                                      '"$0" '
+                                                                                                      '> '
+                                                                                                      '"$program_path/ephemeral_component.py"\n'
+                                                                                                      '_KFP_RUNTIME=true '
+                                                                                                      'python3 '
+                                                                                                      '-m '
+                                                                                                      'kfp.dsl.executor_main                         '
+                                                                                                      '--component_module_path                         '
+                                                                                                      '"$program_path/ephemeral_component.py"                         '
+                                                                                                      '"$@"\n',
+                                                                                                      '\n'
+                                                                                                      'import '
+                                                                                                      'kfp\n'
+                                                                                                      'from '
+                                                                                                      'kfp '
+                                                                                                      'import '
+                                                                                                      'dsl\n'
+                                                                                                      'from '
+                                                                                                      'kfp.dsl '
+                                                                                                      'import '
+                                                                                                      '*\n'
+                                                                                                      'from '
+                                                                                                      'typing '
+                                                                                                      'import '
+                                                                                                      '*\n'
+                                                                                                      '\n'
+                                                                                                      'def '
+                                                                                                      'data_ingestion() '
+                                                                                                      '-> '
+                                                                                                      'str:\n'
+                                                                                                      '    '
+                                                                                                      'return '
+                                                                                                      '"Data '
+                                                                                                      'ingestion '
+                                                                                                      'completed"\n'
+                                                                                                      '\n'],
+                                                                                          'image': 'python:3.11-slim'}},
+                                                    'exec-data-preprocessing': {'container': {'args': ['--executor_input',
+                                                                                                       '{{$}}',
+                                                                                                       '--function_to_execute',
+                                                                                                       'data_preprocessing'],
+                                                                                              'command': ['sh',
+                                                                                                          '-c',
+                                                                                                          '\n'
+                                                                                                          'if '
+                                                                                                          '! '
+                                                                                                          '[ '
+                                                                                                          '-x '
+                                                                                                          '"$(command '
+                                                                                                          '-v '
+                                                                                                          'pip)" '
+                                                                                                          ']; '
+                                                                                                          'then\n'
+                                                                                                          '    '
+                                                                                                          'python3 '
+                                                                                                          '-m '
+                                                                                                          'ensurepip '
+                                                                                                          '|| '
+                                                                                                          'python3 '
+                                                                                                          '-m '
+                                                                                                          'ensurepip '
+                                                                                                          '--user '
+                                                                                                          '|| '
+                                                                                                          'apt-get '
+                                                                                                          'install '
+                                                                                                          'python3-pip\n'
+                                                                                                          'fi\n'
+                                                                                                          '\n'
+                                                                                                          'PIP_DISABLE_PIP_VERSION_CHECK=1 '
+                                                                                                          'python3 '
+                                                                                                          '-m '
+                                                                                                          'pip '
+                                                                                                          'install '
+                                                                                                          '--quiet '
+                                                                                                          '--no-warn-script-location '
+                                                                                                          "'kfp==2.8.0' "
+                                                                                                          "'--no-deps' "
+                                                                                                          "'typing-extensions>=3.7.4,<5; "
+                                                                                                          'python_version<"3.9"\' '
+                                                                                                          '&& '
+                                                                                                          '"$0" '
+                                                                                                          '"$@"\n',
+                                                                                                          'sh',
+                                                                                                          '-ec',
+                                                                                                          'program_path=$(mktemp '
+                                                                                                          '-d)\n'
+                                                                                                          '\n'
+                                                                                                          'printf '
+                                                                                                          '"%s" '
+                                                                                                          '"$0" '
+                                                                                                          '> '
+                                                                                                          '"$program_path/ephemeral_component.py"\n'
+                                                                                                          '_KFP_RUNTIME=true '
+                                                                                                          'python3 '
+                                                                                                          '-m '
+                                                                                                          'kfp.dsl.executor_main                         '
+                                                                                                          '--component_module_path                         '
+                                                                                                          '"$program_path/ephemeral_component.py"                         '
+                                                                                                          '"$@"\n',
+                                                                                                          '\n'
+                                                                                                          'import '
+                                                                                                          'kfp\n'
+                                                                                                          'from '
+                                                                                                          'kfp '
+                                                                                                          'import '
+                                                                                                          'dsl\n'
+                                                                                                          'from '
+                                                                                                          'kfp.dsl '
+                                                                                                          'import '
+                                                                                                          '*\n'
+                                                                                                          'from '
+                                                                                                          'typing '
+                                                                                                          'import '
+                                                                                                          '*\n'
+                                                                                                          '\n'
+                                                                                                          'def '
+                                                                                                          'data_preprocessing(validation_status: '
+                                                                                                          'str) '
+                                                                                                          '-> '
+                                                                                                          'str:\n'
+                                                                                                          '    '
+                                                                                                          'return '
+                                                                                                          'f"{validation_status} '
+                                                                                                          '-> '
+                                                                                                          'preprocessing '
+                                                                                                          'completed"\n'
+                                                                                                          '\n'],
+                                                                                              'image': 'python:3.11-slim'}},
+                                                    'exec-data-validation': {'container': {'args': ['--executor_input',
+                                                                                                    '{{$}}',
+                                                                                                    '--function_to_execute',
+                                                                                                    'data_validation'],
+                                                                                           'command': ['sh',
+                                                                                                       '-c',
+                                                                                                       '\n'
+                                                                                                       'if '
+                                                                                                       '! '
+                                                                                                       '[ '
+                                                                                                       '-x '
+                                                                                                       '"$(command '
+                                                                                                       '-v '
+                                                                                                       'pip)" '
+                                                                                                       ']; '
+                                                                                                       'then\n'
+                                                                                                       '    '
+                                                                                                       'python3 '
+                                                                                                       '-m '
+                                                                                                       'ensurepip '
+                                                                                                       '|| '
+                                                                                                       'python3 '
+                                                                                                       '-m '
+                                                                                                       'ensurepip '
+                                                                                                       '--user '
+                                                                                                       '|| '
+                                                                                                       'apt-get '
+                                                                                                       'install '
+                                                                                                       'python3-pip\n'
+                                                                                                       'fi\n'
+                                                                                                       '\n'
+                                                                                                       'PIP_DISABLE_PIP_VERSION_CHECK=1 '
+                                                                                                       'python3 '
+                                                                                                       '-m '
+                                                                                                       'pip '
+                                                                                                       'install '
+                                                                                                       '--quiet '
+                                                                                                       '--no-warn-script-location '
+                                                                                                       "'kfp==2.8.0' "
+                                                                                                       "'--no-deps' "
+                                                                                                       "'typing-extensions>=3.7.4,<5; "
+                                                                                                       'python_version<"3.9"\' '
+                                                                                                       '&& '
+                                                                                                       '"$0" '
+                                                                                                       '"$@"\n',
+                                                                                                       'sh',
+                                                                                                       '-ec',
+                                                                                                       'program_path=$(mktemp '
+                                                                                                       '-d)\n'
+                                                                                                       '\n'
+                                                                                                       'printf '
+                                                                                                       '"%s" '
+                                                                                                       '"$0" '
+                                                                                                       '> '
+                                                                                                       '"$program_path/ephemeral_component.py"\n'
+                                                                                                       '_KFP_RUNTIME=true '
+                                                                                                       'python3 '
+                                                                                                       '-m '
+                                                                                                       'kfp.dsl.executor_main                         '
+                                                                                                       '--component_module_path                         '
+                                                                                                       '"$program_path/ephemeral_component.py"                         '
+                                                                                                       '"$@"\n',
+                                                                                                       '\n'
+                                                                                                       'import '
+                                                                                                       'kfp\n'
+                                                                                                       'from '
+                                                                                                       'kfp '
+                                                                                                       'import '
+                                                                                                       'dsl\n'
+                                                                                                       'from '
+                                                                                                       'kfp.dsl '
+                                                                                                       'import '
+                                                                                                       '*\n'
+                                                                                                       'from '
+                                                                                                       'typing '
+                                                                                                       'import '
+                                                                                                       '*\n'
+                                                                                                       '\n'
+                                                                                                       'def '
+                                                                                                       'data_validation(ingestion_status: '
+                                                                                                       'str) '
+                                                                                                       '-> '
+                                                                                                       'str:\n'
+                                                                                                       '    '
+                                                                                                       'return '
+                                                                                                       'f"{ingestion_status} '
+                                                                                                       '-> '
+                                                                                                       'validation '
+                                                                                                       'completed"\n'
+                                                                                                       '\n'],
+                                                                                           'image': 'python:3.11-slim'}},
+                                                    'exec-feature-engineering': {'container': {'args': ['--executor_input',
+                                                                                                        '{{$}}',
+                                                                                                        '--function_to_execute',
+                                                                                                        'feature_engineering'],
+                                                                                               'command': ['sh',
+                                                                                                           '-c',
+                                                                                                           '\n'
+                                                                                                           'if '
+                                                                                                           '! '
+                                                                                                           '[ '
+                                                                                                           '-x '
+                                                                                                           '"$(command '
+                                                                                                           '-v '
+                                                                                                           'pip)" '
+                                                                                                           ']; '
+                                                                                                           'then\n'
+                                                                                                           '    '
+                                                                                                           'python3 '
+                                                                                                           '-m '
+                                                                                                           'ensurepip '
+                                                                                                           '|| '
+                                                                                                           'python3 '
+                                                                                                           '-m '
+                                                                                                           'ensurepip '
+                                                                                                           '--user '
+                                                                                                           '|| '
+                                                                                                           'apt-get '
+                                                                                                           'install '
+                                                                                                           'python3-pip\n'
+                                                                                                           'fi\n'
+                                                                                                           '\n'
+                                                                                                           'PIP_DISABLE_PIP_VERSION_CHECK=1 '
+                                                                                                           'python3 '
+                                                                                                           '-m '
+                                                                                                           'pip '
+                                                                                                           'install '
+                                                                                                           '--quiet '
+                                                                                                           '--no-warn-script-location '
+                                                                                                           "'kfp==2.8.0' "
+                                                                                                           "'--no-deps' "
+                                                                                                           "'typing-extensions>=3.7.4,<5; "
+                                                                                                           'python_version<"3.9"\' '
+                                                                                                           '&& '
+                                                                                                           '"$0" '
+                                                                                                           '"$@"\n',
+                                                                                                           'sh',
+                                                                                                           '-ec',
+                                                                                                           'program_path=$(mktemp '
+                                                                                                           '-d)\n'
+                                                                                                           '\n'
+                                                                                                           'printf '
+                                                                                                           '"%s" '
+                                                                                                           '"$0" '
+                                                                                                           '> '
+                                                                                                           '"$program_path/ephemeral_component.py"\n'
+                                                                                                           '_KFP_RUNTIME=true '
+                                                                                                           'python3 '
+                                                                                                           '-m '
+                                                                                                           'kfp.dsl.executor_main                         '
+                                                                                                           '--component_module_path                         '
+                                                                                                           '"$program_path/ephemeral_component.py"                         '
+                                                                                                           '"$@"\n',
+                                                                                                           '\n'
+                                                                                                           'import '
+                                                                                                           'kfp\n'
+                                                                                                           'from '
+                                                                                                           'kfp '
+                                                                                                           'import '
+                                                                                                           'dsl\n'
+                                                                                                           'from '
+                                                                                                           'kfp.dsl '
+                                                                                                           'import '
+                                                                                                           '*\n'
+                                                                                                           'from '
+                                                                                                           'typing '
+                                                                                                           'import '
+                                                                                                           '*\n'
+                                                                                                           '\n'
+                                                                                                           'def '
+                                                                                                           'feature_engineering(preprocessing_status: '
+                                                                                                           'str) '
+                                                                                                           '-> '
+                                                                                                           'str:\n'
+                                                                                                           '    '
+                                                                                                           'return '
+                                                                                                           'f"{preprocessing_status} '
+                                                                                                           '-> '
+                                                                                                           'feature '
+                                                                                                           'engineering '
+                                                                                                           'completed"\n'
+                                                                                                           '\n'],
+                                                                                               'image': 'python:3.11-slim'}},
+                                                    'exec-model-evaluation': {'container': {'args': ['--executor_input',
+                                                                                                     '{{$}}',
+                                                                                                     '--function_to_execute',
+                                                                                                     'model_evaluation'],
+                                                                                            'command': ['sh',
+                                                                                                        '-c',
+                                                                                                        '\n'
+                                                                                                        'if '
+                                                                                                        '! '
+                                                                                                        '[ '
+                                                                                                        '-x '
+                                                                                                        '"$(command '
+                                                                                                        '-v '
+                                                                                                        'pip)" '
+                                                                                                        ']; '
+                                                                                                        'then\n'
+                                                                                                        '    '
+                                                                                                        'python3 '
+                                                                                                        '-m '
+                                                                                                        'ensurepip '
+                                                                                                        '|| '
+                                                                                                        'python3 '
+                                                                                                        '-m '
+                                                                                                        'ensurepip '
+                                                                                                        '--user '
+                                                                                                        '|| '
+                                                                                                        'apt-get '
+                                                                                                        'install '
+                                                                                                        'python3-pip\n'
+                                                                                                        'fi\n'
+                                                                                                        '\n'
+                                                                                                        'PIP_DISABLE_PIP_VERSION_CHECK=1 '
+                                                                                                        'python3 '
+                                                                                                        '-m '
+                                                                                                        'pip '
+                                                                                                        'install '
+                                                                                                        '--quiet '
+                                                                                                        '--no-warn-script-location '
+                                                                                                        "'kfp==2.8.0' "
+                                                                                                        "'--no-deps' "
+                                                                                                        "'typing-extensions>=3.7.4,<5; "
+                                                                                                        'python_version<"3.9"\' '
+                                                                                                        '&& '
+                                                                                                        '"$0" '
+                                                                                                        '"$@"\n',
+                                                                                                        'sh',
+                                                                                                        '-ec',
+                                                                                                        'program_path=$(mktemp '
+                                                                                                        '-d)\n'
+                                                                                                        '\n'
+                                                                                                        'printf '
+                                                                                                        '"%s" '
+                                                                                                        '"$0" '
+                                                                                                        '> '
+                                                                                                        '"$program_path/ephemeral_component.py"\n'
+                                                                                                        '_KFP_RUNTIME=true '
+                                                                                                        'python3 '
+                                                                                                        '-m '
+                                                                                                        'kfp.dsl.executor_main                         '
+                                                                                                        '--component_module_path                         '
+                                                                                                        '"$program_path/ephemeral_component.py"                         '
+                                                                                                        '"$@"\n',
+                                                                                                        '\n'
+                                                                                                        'import '
+                                                                                                        'kfp\n'
+                                                                                                        'from '
+                                                                                                        'kfp '
+                                                                                                        'import '
+                                                                                                        'dsl\n'
+                                                                                                        'from '
+                                                                                                        'kfp.dsl '
+                                                                                                        'import '
+                                                                                                        '*\n'
+                                                                                                        'from '
+                                                                                                        'typing '
+                                                                                                        'import '
+                                                                                                        '*\n'
+                                                                                                        '\n'
+                                                                                                        'def '
+                                                                                                        'model_evaluation(training_status: '
+                                                                                                        'str) '
+                                                                                                        '-> '
+                                                                                                        'float:\n'
+                                                                                                        '    '
+                                                                                                        '_ '
+                                                                                                        '= '
+                                                                                                        'training_status\n'
+                                                                                                        '    '
+                                                                                                        'return '
+                                                                                                        '0.93\n'
+                                                                                                        '\n'],
+                                                                                            'image': 'python:3.11-slim'}},
+                                                    'exec-model-training': {'container': {'args': ['--executor_input',
+                                                                                                   '{{$}}',
+                                                                                                   '--function_to_execute',
+                                                                                                   'model_training'],
+                                                                                          'command': ['sh',
+                                                                                                      '-c',
+                                                                                                      '\n'
+                                                                                                      'if '
+                                                                                                      '! '
+                                                                                                      '[ '
+                                                                                                      '-x '
+                                                                                                      '"$(command '
+                                                                                                      '-v '
+                                                                                                      'pip)" '
+                                                                                                      ']; '
+                                                                                                      'then\n'
+                                                                                                      '    '
+                                                                                                      'python3 '
+                                                                                                      '-m '
+                                                                                                      'ensurepip '
+                                                                                                      '|| '
+                                                                                                      'python3 '
+                                                                                                      '-m '
+                                                                                                      'ensurepip '
+                                                                                                      '--user '
+                                                                                                      '|| '
+                                                                                                      'apt-get '
+                                                                                                      'install '
+                                                                                                      'python3-pip\n'
+                                                                                                      'fi\n'
+                                                                                                      '\n'
+                                                                                                      'PIP_DISABLE_PIP_VERSION_CHECK=1 '
+                                                                                                      'python3 '
+                                                                                                      '-m '
+                                                                                                      'pip '
+                                                                                                      'install '
+                                                                                                      '--quiet '
+                                                                                                      '--no-warn-script-location '
+                                                                                                      "'kfp==2.8.0' "
+                                                                                                      "'--no-deps' "
+                                                                                                      "'typing-extensions>=3.7.4,<5; "
+                                                                                                      'python_version<"3.9"\' '
+                                                                                                      '&& '
+                                                                                                      '"$0" '
+                                                                                                      '"$@"\n',
+                                                                                                      'sh',
+                                                                                                      '-ec',
+                                                                                                      'program_path=$(mktemp '
+                                                                                                      '-d)\n'
+                                                                                                      '\n'
+                                                                                                      'printf '
+                                                                                                      '"%s" '
+                                                                                                      '"$0" '
+                                                                                                      '> '
+                                                                                                      '"$program_path/ephemeral_component.py"\n'
+                                                                                                      '_KFP_RUNTIME=true '
+                                                                                                      'python3 '
+                                                                                                      '-m '
+                                                                                                      'kfp.dsl.executor_main                         '
+                                                                                                      '--component_module_path                         '
+                                                                                                      '"$program_path/ephemeral_component.py"                         '
+                                                                                                      '"$@"\n',
+                                                                                                      '\n'
+                                                                                                      'import '
+                                                                                                      'kfp\n'
+                                                                                                      'from '
+                                                                                                      'kfp '
+                                                                                                      'import '
+                                                                                                      'dsl\n'
+                                                                                                      'from '
+                                                                                                      'kfp.dsl '
+                                                                                                      'import '
+                                                                                                      '*\n'
+                                                                                                      'from '
+                                                                                                      'typing '
+                                                                                                      'import '
+                                                                                                      '*\n'
+                                                                                                      '\n'
+                                                                                                      'def '
+                                                                                                      'model_training(feature_status: '
+                                                                                                      'str) '
+                                                                                                      '-> '
+                                                                                                      'str:\n'
+                                                                                                      '    '
+                                                                                                      'return '
+                                                                                                      'f"{feature_status} '
+                                                                                                      '-> '
+                                                                                                      'model '
+                                                                                                      'training '
+                                                                                                      'completed"\n'
+                                                                                                      '\n'],
+                                                                                          'image': 'python:3.11-slim'}}}},
+                   'pipelineInfo': {'description': 'Kubeflow pipeline for '
+                                                   'fraud detection lifecycle',
+                                    'name': 'fraud-detection-pipeline'},
+                   'root': {'dag': {'tasks': {'condition-1': {'componentRef': {'name': 'comp-condition-1'},
+                                                              'dependentTasks': ['model-evaluation'],
+                                                              'inputs': {'parameters': {'pipelinechannel--deploy_auc_threshold': {'componentInputParameter': 'deploy_auc_threshold'},
+                                                                                        'pipelinechannel--model-evaluation-Output': {'taskOutputParameter': {'outputParameterKey': 'Output',
+                                                                                                                                                             'producerTask': 'model-evaluation'}}}},
+                                                              'taskInfo': {'name': 'condition-1'},
+                                                              'triggerPolicy': {'condition': "inputs.parameter_values['pipelinechannel--model-evaluation-Output'] "
+                                                                                             '>= '
+                                                                                             "inputs.parameter_values['pipelinechannel--deploy_auc_threshold']"}},
+                                              'data-ingestion': {'cachingOptions': {'enableCache': True},
+                                                                 'componentRef': {'name': 'comp-data-ingestion'},
+                                                                 'retryPolicy': {'backoffDuration': '0s',
+                                                                                 'backoffFactor': 2,
+                                                                                 'backoffMaxDuration': '3600s',
+                                                                                 'maxRetryCount': 2},
+                                                                 'taskInfo': {'name': 'data-ingestion'}},
+                                              'data-preprocessing': {'cachingOptions': {'enableCache': True},
+                                                                     'componentRef': {'name': 'comp-data-preprocessing'},
+                                                                     'dependentTasks': ['data-validation'],
+                                                                     'inputs': {'parameters': {'validation_status': {'taskOutputParameter': {'outputParameterKey': 'Output',
+                                                                                                                                             'producerTask': 'data-validation'}}}},
+                                                                     'retryPolicy': {'backoffDuration': '0s',
+                                                                                     'backoffFactor': 2,
+                                                                                     'backoffMaxDuration': '3600s',
+                                                                                     'maxRetryCount': 2},
+                                                                     'taskInfo': {'name': 'data-preprocessing'}},
+                                              'data-validation': {'cachingOptions': {'enableCache': True},
+                                                                  'componentRef': {'name': 'comp-data-validation'},
+                                                                  'dependentTasks': ['data-ingestion'],
+                                                                  'inputs': {'parameters': {'ingestion_status': {'taskOutputParameter': {'outputParameterKey': 'Output',
+                                                                                                                                         'producerTask': 'data-ingestion'}}}},
+                                                                  'retryPolicy': {'backoffDuration': '0s',
+                                                                                  'backoffFactor': 2,
+                                                                                  'backoffMaxDuration': '3600s',
+                                                                                  'maxRetryCount': 2},
+                                                                  'taskInfo': {'name': 'data-validation'}},
+                                              'feature-engineering': {'cachingOptions': {'enableCache': True},
+                                                                      'componentRef': {'name': 'comp-feature-engineering'},
+                                                                      'dependentTasks': ['data-preprocessing'],
+                                                                      'inputs': {'parameters': {'preprocessing_status': {'taskOutputParameter': {'outputParameterKey': 'Output',
+                                                                                                                                                 'producerTask': 'data-preprocessing'}}}},
+                                                                      'retryPolicy': {'backoffDuration': '0s',
+                                                                                      'backoffFactor': 2,
+                                                                                      'backoffMaxDuration': '3600s',
+                                                                                      'maxRetryCount': 2},
+                                                                      'taskInfo': {'name': 'feature-engineering'}},
+                                              'model-evaluation': {'cachingOptions': {'enableCache': True},
+                                                                   'componentRef': {'name': 'comp-model-evaluation'},
+                                                                   'dependentTasks': ['model-training'],
+                                                                   'inputs': {'parameters': {'training_status': {'taskOutputParameter': {'outputParameterKey': 'Output',
+                                                                                                                                         'producerTask': 'model-training'}}}},
+                                                                   'retryPolicy': {'backoffDuration': '0s',
+                                                                                   'backoffFactor': 2,
+                                                                                   'backoffMaxDuration': '3600s',
+                                                                                   'maxRetryCount': 1},
+                                                                   'taskInfo': {'name': 'model-evaluation'}},
+                                              'model-training': {'cachingOptions': {'enableCache': True},
+                                                                 'componentRef': {'name': 'comp-model-training'},
+                                                                 'dependentTasks': ['feature-engineering'],
+                                                                 'inputs': {'parameters': {'feature_status': {'taskOutputParameter': {'outputParameterKey': 'Output',
+                                                                                                                                      'producerTask': 'feature-engineering'}}}},
+                                                                 'retryPolicy': {'backoffDuration': '0s',
+                                                                                 'backoffFactor': 2,
+                                                                                 'backoffMaxDuration': '3600s',
+                                                                                 'maxRetryCount': 1},
+                                                                 'taskInfo': {'name': 'model-training'}}}},
+                            'inputDefinitions': {'parameters': {'deploy_auc_threshold': {'defaultValue': 0.92,
+                                                                                         'isOptional': True,
+                                                                                         'parameterType': 'NUMBER_DOUBLE'}}}},
+                   'schemaVersion': '2.1.0',
+                   'sdkVersion': 'kfp-2.8.0'},
+ 'pipeline_version_id': None,
+ 'pipeline_version_reference': None,
+ 'recurring_run_id': None,
+ 'run_details': {'pipeline_context_id': None,
+                 'pipeline_run_context_id': None,
+                 'task_details': [{'child_tasks': None,
+                                   'create_time': datetime.datetime(2026, 4, 23, 4, 47, 19, tzinfo=tzutc()),
+                                   'display_name': 'root-driver',
+                                   'end_time': datetime.datetime(1, 1, 1, 0, 0, tzinfo=tzutc()),
+                                   'error': None,
+                                   'execution_id': None,
+                                   'executor_detail': None,
+                                   'inputs': None,
+                                   'outputs': None,
+                                   'parent_task_id': None,
+                                   'pod_name': None,
+                                   'run_id': 'e7e66e7f-ca42-447e-8e0f-08c26ab94230',
+                                   'start_time': datetime.datetime(2026, 4, 23, 4, 47, 20, tzinfo=tzutc()),
+                                   'state': 'PENDING',
+                                   'state_history': [{'error': None,
+                                                      'state': 'PENDING',
+                                                      'update_time': datetime.datetime(2026, 4, 23, 4, 47, 25, tzinfo=tzutc())}],
+                                   'task_id': '1bd1a391-3843-476f-8867-139f6523730c'},
+                                  {'child_tasks': [{'pod_name': 'fraud-detection-pipeline-cfdzz-3965571401',
+                                                    'task_id': None}],
+                                   'create_time': datetime.datetime(2026, 4, 23, 4, 47, 19, tzinfo=tzutc()),
+                                   'display_name': 'fraud-detection-pipeline-cfdzz',
+                                   'end_time': datetime.datetime(1, 1, 1, 0, 0, tzinfo=tzutc()),
+                                   'error': None,
+                                   'execution_id': None,
+                                   'executor_detail': None,
+                                   'inputs': None,
+                                   'outputs': None,
+                                   'parent_task_id': None,
+                                   'pod_name': None,
+                                   'run_id': 'e7e66e7f-ca42-447e-8e0f-08c26ab94230',
+                                   'start_time': datetime.datetime(2026, 4, 23, 4, 47, 20, tzinfo=tzutc()),
+                                   'state': 'RUNNING',
+                                   'state_history': [{'error': None,
+                                                      'state': 'RUNNING',
+                                                      'update_time': datetime.datetime(2026, 4, 23, 4, 47, 25, tzinfo=tzutc())}],
+                                   'task_id': '3fce4e04-9d4f-470b-a8b4-70b32b93cb7f'}]},
+ 'run_id': 'e7e66e7f-ca42-447e-8e0f-08c26ab94230',
+ 'runtime_config': {'parameters': {'deploy_auc_threshold': 0.92},
+                    'pipeline_root': None},
+ 'scheduled_at': datetime.datetime(2026, 4, 23, 4, 47, 19, tzinfo=tzutc()),
+ 'service_account': 'pipeline-runner',
+ 'state': 'RUNNING',
+ 'state_history': [{'error': None,
+                    'state': 'PENDING',
+                    'update_time': datetime.datetime(2026, 4, 23, 4, 47, 19, tzinfo=tzutc())},
+                   {'error': None,
+                    'state': 'RUNNING',
+                    'update_time': datetime.datetime(2026, 4, 23, 4, 47, 25, tzinfo=tzutc())}],
+ 'storage_state': 'AVAILABLE'}

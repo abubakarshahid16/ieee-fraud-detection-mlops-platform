@@ -1,0 +1,48 @@
+Generic Cause
+[Pipeline] Start of Pipeline
+ Received:
+
+{"alerts":[{"status":"firing","labels":{"alertname":"FraudRecallDrop"}}]}
+
+
+Contributing variables:
+
+    alert_name = FraudRecallDrop
+    alert_state = firing
+
+
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/fraud-mlops-pipeline
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Context)
+[Pipeline] echo
+Fraud MLOps Jenkins pipeline started
+[Pipeline] echo
+Alert Name: FraudRecallDrop
+[Pipeline] echo
+Alert State: firing
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Validation)
+[Pipeline] sh
++ echo Running CI validation
+Running CI validation
+[Pipeline] sh
++ echo Jenkinsfile-equivalent execution completed
+Jenkinsfile-equivalent execution completed
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Retraining Trigger)
+[Pipeline] sh
++ echo Monitoring alert received, retraining workflow would be invoked here
+Monitoring alert received, retraining workflow would be invoked here
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+

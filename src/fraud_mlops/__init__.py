@@ -1,0 +1,2 @@
+"""Fraud MLOps assignment package."""
+

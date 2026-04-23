@@ -1,0 +1,16 @@
+Kubeflow live evidence
+----------------------
+Kubeflow Pipelines installed in namespace: kubeflow
+KFP UI port-forward health: HTTP 200
+KFP API submitted pipeline successfully
+Experiment ID: see docs/evidence/logs/kubeflow_pipeline_run_submit.log
+Run ID: see docs/evidence/logs/kubeflow_pipeline_run_submit.log
+Pipeline stages:
+1. Data Ingestion
+2. Data Validation
+3. Data Preprocessing
+4. Feature Engineering
+5. Model Training
+6. Model Evaluation
+7. Conditional Deployment
+Retries and conditional deployment are included in the compiled pipeline spec.

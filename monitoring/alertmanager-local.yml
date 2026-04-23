@@ -1,0 +1,10 @@
+route:
+  receiver: jenkins-webhook
+  group_wait: 10s
+  group_interval: 30s
+  repeat_interval: 1h
+
+receivers:
+  - name: jenkins-webhook
+    webhook_configs:
+      - url: http://host.docker.internal:8080/generic-webhook-trigger/invoke?token=fraud-alert-token

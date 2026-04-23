@@ -1,0 +1,10 @@
+Alert to CI/CD evidence
+-----------------------
+Prometheus alert: FraudRecallDrop
+Alert state: firing
+Alertmanager receiver: jenkins-webhook
+Webhook target: Jenkins Generic Webhook Trigger
+Jenkins job: fraud-mlops-pipeline
+Jenkins result: SUCCESS
+Console log: docs/evidence/logs/jenkins_alertmanager_console.log
+This demonstrates monitoring degradation automatically triggering the CI/CD retraining workflow path.

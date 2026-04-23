@@ -1,0 +1,8 @@
+{
+  "event": "FraudRecallDrop",
+  "metric": "fraud_model_recall",
+  "value": 0.0,
+  "threshold": 0.85,
+  "comparison": "lte",
+  "action": "trigger_retraining"
+}

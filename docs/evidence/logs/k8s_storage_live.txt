@@ -1,0 +1,5 @@
+NAME                              CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE   VOLUMEMODE
+persistentvolume/fraud-mlops-pv   10Gi       RWO            Retain           Available                          <unset>                          55m   Filesystem
+
+NAMESPACE     NAME                                    STATUS    VOLUME           CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+fraud-mlops   persistentvolumeclaim/fraud-mlops-pvc   Pending   fraud-mlops-pv   0                         standard       <unset>                 54m   Filesystem

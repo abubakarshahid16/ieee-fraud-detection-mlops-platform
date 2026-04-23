@@ -1,0 +1,7 @@
+{
+  "event": "drift_alert",
+  "metric": "fraud_data_drift_score",
+  "value": 0.21,
+  "threshold": 0.15,
+  "action": "trigger_retraining"
+}

@@ -1,0 +1,27 @@
+random_state: 42
+label_column: isFraud
+drop_columns:
+  - TransactionID
+train_fraction_for_time_split: 0.8
+evaluation_threshold: 0.05
+deploy_auc_threshold: 0.92
+top_high_cardinality: 20
+smote_sampling_strategy: 0.2
+max_missing_ratio: 0.95
+max_numeric_features: 120
+max_categorical_features: 40
+
+imbalance_strategies:
+  - class_weight
+  - smote
+
+models:
+  - xgboost
+  - lightgbm
+  - hybrid_rf
+
+cost_sensitive_multipliers:
+  standard: 1.0
+  cost_sensitive: 5.0
+
+artifacts_dir: artifacts

@@ -1,0 +1,17 @@
+NAME                                       READY   STATUS    RESTARTS   AGE    IP            NODE                        NOMINATED NODE   READINESS GATES
+pod/fraud-inference-api-7bdd67fdd5-h2grr   1/1     Running   0          3m6s   10.244.0.13   fraud-mlops-control-plane   <none>           <none>
+pod/fraud-inference-api-7bdd67fdd5-qr25s   1/1     Running   0          3m5s   10.244.0.14   fraud-mlops-control-plane   <none>           <none>
+
+NAME                          TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/fraud-inference-api   ClusterIP   10.96.51.29   <none>        8000/TCP   54m   app=fraud-inference-api
+
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                        SELECTOR
+deployment.apps/fraud-inference-api   2/2     2            2           54m   api          docker.io/library/fraud-inference-api:local   app=fraud-inference-api
+
+NAME                                             DESIRED   CURRENT   READY   AGE    CONTAINERS   IMAGES                                        SELECTOR
+replicaset.apps/fraud-inference-api-56555f9ccb   0         0         0       54m    api          fraud-inference-api:local                     app=fraud-inference-api,pod-template-hash=56555f9ccb
+replicaset.apps/fraud-inference-api-5c564c9c54   0         0         0       3m7s   api          docker.io/library/fraud-inference-api:local   app=fraud-inference-api,pod-template-hash=5c564c9c54
+replicaset.apps/fraud-inference-api-5df8dc6c74   0         0         0       54m    api          ghcr.io/example/fraud-inference-api:latest    app=fraud-inference-api,pod-template-hash=5df8dc6c74
+replicaset.apps/fraud-inference-api-7bdd67fdd5   2         2         2       3m6s   api          docker.io/library/fraud-inference-api:local   app=fraud-inference-api,pod-template-hash=7bdd67fdd5
+replicaset.apps/fraud-inference-api-7f8688d6df   0         0         0       14m    api          docker.io/library/fraud-inference-api:local   app=fraud-inference-api,pod-template-hash=7f8688d6df
+replicaset.apps/fraud-inference-api-866d74bf79   0         0         0       48m    api          docker.io/library/fraud-inference-api:local   app=fraud-inference-api,pod-template-hash=866d74bf79

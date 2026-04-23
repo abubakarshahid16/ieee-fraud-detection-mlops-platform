@@ -1,0 +1,1 @@
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"fraud_api_requests_total","endpoint":"/predict","instance":"host.docker.internal:8000","job":"fraud-inference-api-local","method":"POST","status":"200"},"value":[1776859770.627,"3"]}]}}

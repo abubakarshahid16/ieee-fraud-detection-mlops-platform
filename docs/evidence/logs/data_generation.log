@@ -1,0 +1,9 @@
+Real IEEE-CIS dataset extraction
+--------------------------------
+Source zip: C:/Users/abuba/Downloads/ieee-fraud-detection.zip
+Extracted files: train_transaction.csv, train_identity.csv
+Rows: 590540
+Fraud count: 20663
+Fraud rate: 0.03499000914417313
+train_transaction.csv size: 683351067
+train_identity.csv size: 26529680

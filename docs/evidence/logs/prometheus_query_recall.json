@@ -1,0 +1,1 @@
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"fraud_model_recall","instance":"host.docker.internal:8000","job":"fraud-inference-api-local"},"value":[1776859770.681,"0"]}]}}

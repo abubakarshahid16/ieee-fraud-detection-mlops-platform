@@ -1,0 +1,45 @@
+health_status: 200 {'status': 'ok'}
+predict_status: 200
+{
+  "predictions": [
+    1,
+    1,
+    1
+  ],
+  "probabilities": [
+    0.5319551229476929,
+    0.35142725706100464,
+    0.14346908032894135
+  ]
+}
+metrics_status: 200
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 967.0
+python_gc_objects_collected_total{generation="1"} 106.0
+python_gc_objects_collected_total{generation="2"} 6.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 370.0
+python_gc_collections_total{generation="1"} 33.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="12",patchlevel="10",version="3.12.10"} 1.0
+# HELP fraud_api_requests_total Total API requests
+# TYPE fraud_api_requests_total counter
+fraud_api_requests_total{endpoint="/predict",method="POST",status="200"} 1.0
+# HELP fraud_api_requests_created Total API requests
+# TYPE fraud_api_requests_created gauge
+fraud_api_requests_created{endpoint="/predict",method="POST",status="200"} 1.7768558635441961e+09
+# HELP fraud_api_request_latency_seconds API latency in seconds
+# TYPE fraud_api_request_latency_seconds histogram
+fraud_api_request_latency_seconds_bucket{endpoint="/predict",le="0.005"} 0.0
+fraud_api_request_latency_seconds_bucket{endpoint="/predict",le="0.01"} 0.0
+fraud_api_request_latency_seconds_bucket{endpoint="/predict",le="0.025"} 0.0
+fraud_api_request_latency_seconds_bucket{endpoint="/predict",le="0.05"} 0.0

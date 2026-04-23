@@ -1,0 +1,34 @@
+{
+  "title": "Model Performance Dashboard",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Fraud Recall",
+      "targets": [
+        {
+          "expr": "fraud_model_recall"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Fraud Precision",
+      "targets": [
+        {
+          "expr": "fraud_model_precision"
+        }
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "False Positive Rate",
+      "targets": [
+        {
+          "expr": "fraud_model_false_positive_rate"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}

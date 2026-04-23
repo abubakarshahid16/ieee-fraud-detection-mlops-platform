@@ -1,0 +1,1 @@
+{"status":"success","data":{"alerts":[{"labels":{"alertname":"FraudRecallDrop","instance":"host.docker.internal:8000","job":"fraud-inference-api-local","severity":"critical"},"annotations":{"action":"Trigger GitHub Actions retraining workflow","summary":"Fraud recall dropped below threshold"},"state":"pending","activeAt":"2026-04-23T04:39:34.399689495Z","value":"0e+00"}]}}

@@ -1,0 +1,17 @@
+NAME                                               READY   STATUS             RESTARTS        AGE   IP            NODE                        NOMINATED NODE   READINESS GATES
+cache-deployer-deployment-57987dbd88-h67qz         1/1     Running            0               14h   10.244.0.16   fraud-mlops-control-plane   <none>           <none>
+cache-server-69c8b6d699-ngbr5                      1/1     Running            0               14h   10.244.0.31   fraud-mlops-control-plane   <none>           <none>
+controller-manager-6b79664cd8-jhzm8                1/1     Running            0               14h   10.244.0.15   fraud-mlops-control-plane   <none>           <none>
+metadata-envoy-deployment-7969bc55d8-ffvjn         1/1     Running            0               14h   10.244.0.17   fraud-mlops-control-plane   <none>           <none>
+metadata-grpc-deployment-7cd994d449-gwjgx          1/1     Running            9 (14h ago)     14h   10.244.0.18   fraud-mlops-control-plane   <none>           <none>
+metadata-writer-85d8896f9b-cw8kx                   1/1     Running            6 (14h ago)     14h   10.244.0.19   fraud-mlops-control-plane   <none>           <none>
+ml-pipeline-6879b55597-thmn9                       1/1     Running            8 (14h ago)     14h   10.244.0.22   fraud-mlops-control-plane   <none>           <none>
+ml-pipeline-persistenceagent-7488ddc9c4-m5c8x      1/1     Running            6 (14h ago)     14h   10.244.0.20   fraud-mlops-control-plane   <none>           <none>
+ml-pipeline-scheduledworkflow-9d47976c5-ffjqd      1/1     Running            4 (14h ago)     14h   10.244.0.21   fraud-mlops-control-plane   <none>           <none>
+ml-pipeline-ui-7d99bc8b7-2zr69                     1/1     Running            0               14h   10.244.0.23   fraud-mlops-control-plane   <none>           <none>
+ml-pipeline-viewer-crd-5d495d8c68-9l65l            1/1     Running            0               14h   10.244.0.24   fraud-mlops-control-plane   <none>           <none>
+ml-pipeline-visualizationserver-74b494d6f9-ls7hn   1/1     Running            0               14h   10.244.0.25   fraud-mlops-control-plane   <none>           <none>
+mysql-5bb7cf8b95-sb6wm                             1/1     Running            0               14h   10.244.0.30   fraud-mlops-control-plane   <none>           <none>
+proxy-agent-794df6dfbd-d6mxh                       0/1     CrashLoopBackOff   56 (4m9s ago)   14h   172.19.0.2    fraud-mlops-control-plane   <none>           <none>
+seaweedfs-58b784d48c-zlb62                         1/1     Running            0               14h   10.244.0.29   fraud-mlops-control-plane   <none>           <none>
+workflow-controller-6b89c5dd44-dsbbc               1/1     Running            0               14h   10.244.0.26   fraud-mlops-control-plane   <none>           <none>
