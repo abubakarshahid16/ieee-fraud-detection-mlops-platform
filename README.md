@@ -104,6 +104,86 @@ The evidence covers:
 - Prometheus/Grafana monitoring evidence
 - alert-triggered retraining evidence
 
+## Visual Walkthrough
+
+### 1. Real IEEE-CIS Dataset
+
+The project uses the real IEEE-CIS fraud detection training files and confirms the fraud rate and dataset size before training.
+
+![Dataset Evidence](docs/evidence/01_data_generation.png)
+
+### 2. Training Summary
+
+Multiple fraud models and strategies were trained and compared. The final selected model prioritized fraud recall.
+
+![Training Summary](docs/evidence/02_training_summary.png)
+
+### 3. Fraud Confusion Matrix
+
+The confusion matrix shows the fraud/legitimate classification trade-off and supports recall-focused business analysis.
+
+![Confusion Matrix](docs/evidence/03_confusion_matrix.png)
+
+### 4. Model and Strategy Comparison
+
+This comparison shows the behavior of XGBoost, LightGBM, and hybrid Random Forest under imbalance and cost-sensitive strategies.
+
+![Model Comparison](docs/evidence/04_model_comparison.png)
+
+### 5. Drift Detection
+
+The project simulates time-based drift and identifies features whose distributions changed over time.
+
+![Drift Summary](docs/evidence/05_drift_summary.png)
+
+### 6. Kubeflow Pipelines
+
+Kubeflow Pipelines was used to represent the ML workflow with retries and conditional deployment.
+
+![Kubeflow Evidence](docs/evidence/06_kubeflow_compile.png)
+
+### 7. Kubernetes Deployment
+
+The inference API was deployed into Kubernetes with namespace isolation, resource configuration, and service exposure.
+
+![Kubernetes Evidence](docs/evidence/07_k8s_validation.png)
+
+### 8. Docker and CI/CD
+
+Training and inference Docker images were built, pushed to a local registry, and integrated with Jenkins CI/CD.
+
+![Docker and CI/CD Evidence](docs/evidence/08_tests_and_ci.png)
+
+### 9. Live API Inference
+
+The FastAPI inference service exposes health, prediction, and Prometheus metrics endpoints.
+
+![API Evidence](docs/evidence/09_api_prediction.png)
+
+### 10. Prometheus and Grafana Monitoring
+
+Prometheus collects metrics, while Grafana dashboards visualize system health, model performance, and data drift.
+
+![Monitoring Evidence](docs/evidence/10_monitoring_overview.png)
+
+### 11. Alert-Triggered Retraining
+
+Prometheus alerts are routed through Alertmanager and trigger Jenkins retraining workflow execution.
+
+![Alert Trigger Evidence](docs/evidence/11_alert_trigger.png)
+
+### 12. Final Submission Structure
+
+The final project contains source code, configs, reports, monitoring files, Kubernetes manifests, Jenkins files, and evidence artifacts.
+
+![Submission Structure](docs/evidence/12_submission_tree.png)
+
+### 13. Transaction Distribution
+
+The project also includes dataset exploration visuals for quick fraud-data understanding.
+
+![Transaction Distribution](docs/evidence/13_transaction_distribution.png)
+
 ## How To Run
 
 ### 1. Install Dependencies
