@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraud Detection MLOps Platform</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; background: #f6f8fb; color: #1d2a3a; }
+    .hero {
+      background: linear-gradient(135deg, #111827, #1e3a8a 55%, #1d4ed8);
+      color: white;
+      padding: 74px 24px 54px;
+      text-align: center;
+    }
+    .hero h1 { margin: 0 0 14px; font-size: 48px; }
+    .hero p { max-width: 940px; margin: 0 auto 26px; font-size: 18px; line-height: 1.65; color: #dbeafe; }
+    .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; text-decoration: none; padding: 14px 22px; border-radius: 999px; font-weight: 700; }
+    .btn-primary { background: #93c5fd; color: #102033; }
+    .btn-secondary { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.18); }
+    .container { max-width: 1180px; margin: 0 auto; padding: 32px 24px 64px; }
+    .section { background: white; border-radius: 24px; box-shadow: 0 14px 32px rgba(20,32,52,0.08); padding: 28px; margin-bottom: 26px; }
+    .section h2 { margin-top: 0; font-size: 30px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 18px; }
+    .stat { background: #f8fbff; border: 1px solid #e5edf7; border-radius: 16px; padding: 18px; }
+    .stat strong { display: block; font-size: 28px; margin-bottom: 8px; color: #1d4ed8; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+    .card { background: #f8fbff; border: 1px solid #e5edf7; border-radius: 18px; overflow: hidden; }
+    .card img { width: 100%; display: block; }
+    .card .copy { padding: 18px; }
+    .card h3 { margin: 0 0 10px; font-size: 24px; }
+    .list { padding-left: 18px; line-height: 1.7; }
+    @media (max-width: 900px) {
+      .grid, .stats { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 38px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>IEEE-CIS Fraud Detection MLOps Platform</h1>
+    <p>A production-style fraud detection platform built around the IEEE-CIS dataset with model training, monitoring, drift detection, Kubernetes deployment, Kubeflow orchestration, CI/CD, and explainability.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="evidence/10_monitoring_overview.png">Open Monitoring Evidence</a>
+      <a class="btn btn-secondary" href="https://github.com/abubakarshahid16/ieee-fraud-detection-mlops-platform">View Repository</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <h2>Key Result</h2>
+      <div class="stats">
+        <div class="stat"><strong>0.9998</strong>Fraud recall on the selected run</div>
+        <div class="stat"><strong>XGBoost</strong>Best-performing selected model</div>
+        <div class="stat"><strong>Kubeflow</strong>Conditional workflow and retraining pipeline</div>
+        <div class="stat"><strong>Grafana</strong>Monitoring and alert-driven response path</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>System Evidence</h2>
+      <div class="grid">
+        <article class="card">
+          <img src="evidence/02_training_summary.png" alt="Training summary">
+          <div class="copy">
+            <h3>Training and Model Selection</h3>
+            <p>Multiple strategies were compared to prioritize fraud recall while still tracking AUC, F1, and class imbalance behavior.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="evidence/07_k8s_validation.png" alt="Kubernetes validation">
+          <div class="copy">
+            <h3>Kubernetes Deployment</h3>
+            <p>The inference API was structured as a deployable service with namespace, resource, and service configuration evidence.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="evidence/10_monitoring_overview.png" alt="Monitoring overview">
+          <div class="copy">
+            <h3>Monitoring Stack</h3>
+            <p>Prometheus and Grafana were used to track system health, metrics, and model-facing behavior after deployment.</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="evidence/11_alert_trigger.png" alt="Alert trigger">
+          <div class="copy">
+            <h3>Alert-Triggered Retraining</h3>
+            <p>Monitoring signals were wired into an operational retraining story through Alertmanager and Jenkins integration.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Why This Repo Matters</h2>
+      <ul class="list">
+        <li>It demonstrates more than modeling by showing full ML lifecycle thinking</li>
+        <li>It ties together data preparation, evaluation, deployment, monitoring, and retraining</li>
+        <li>It presents evidence of a production-style workflow instead of a notebook-only experiment</li>
+        <li>It is one of the strongest MLOps-oriented projects in the portfolio</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

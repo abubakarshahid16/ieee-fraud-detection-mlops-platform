@@ -2,6 +2,10 @@
 
 > A complete production-style MLOps solution for fraud detection, covering training, deployment, monitoring, drift detection, alerting, CI/CD, and explainability.
 
+## Live Showcase
+
+- GitHub Pages case study: <https://abubakarshahid16.github.io/ieee-fraud-detection-mlops-platform/>
+
 ## Problem
 
 Financial platforms process thousands of transactions every minute, and even a small number of missed fraud cases can create major business loss. A production fraud system must do more than train a model: it must detect fraud with high recall, handle class imbalance, monitor model and data behavior, and automatically trigger retraining when performance degrades.
