@@ -1,0 +1,29 @@
+<svg width="1600" height="720" viewBox="0 0 1600 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="720" rx="36" fill="#07111F"/>
+  <rect x="48" y="48" width="1504" height="624" rx="32" fill="url(#paint0_linear)" stroke="#173A60"/>
+  <text x="112" y="160" fill="#8CD3FF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Production-Style Fraud Detection</text>
+  <text x="112" y="252" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="66" font-weight="700">IEEE-CIS Fraud Detection MLOps Platform</text>
+  <text x="112" y="324" fill="#D8E5F2" font-family="Arial, sans-serif" font-size="28">Training, deployment, monitoring, drift detection, CI/CD, and explainability in one portfolio-ready system.</text>
+  <rect x="112" y="386" width="220" height="58" rx="29" fill="#1EE7D4"/>
+  <text x="160" y="423" fill="#04101F" font-family="Arial, sans-serif" font-size="24" font-weight="700">Kubeflow</text>
+  <rect x="356" y="386" width="220" height="58" rx="29" fill="#173252"/>
+  <text x="420" y="423" fill="#EAF6FF" font-family="Arial, sans-serif" font-size="24" font-weight="700">MLflow</text>
+  <rect x="600" y="386" width="250" height="58" rx="29" fill="#173252"/>
+  <text x="665" y="423" fill="#EAF6FF" font-family="Arial, sans-serif" font-size="24" font-weight="700">Monitoring</text>
+  <rect x="986" y="150" width="456" height="388" rx="28" fill="#0E223E" stroke="#1A4268"/>
+  <text x="1030" y="214" fill="#8CD3FF" font-family="Arial, sans-serif" font-size="22" font-weight="700">Workflow</text>
+  <text x="1030" y="278" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Train</text>
+  <text x="1030" y="336" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Deploy</text>
+  <text x="1030" y="394" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Monitor</text>
+  <text x="1030" y="452" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="28" font-weight="700">Retrain</text>
+  <path d="M1148 270H1344" stroke="#1EE7D4" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1148 328H1298" stroke="#2A527C" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1148 386H1366" stroke="#1EE7D4" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1148 444H1280" stroke="#2A527C" stroke-width="10" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="paint0_linear" x1="800" y1="48" x2="800" y2="672" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A2347"/>
+      <stop offset="1" stop-color="#081426"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,24 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#061126"/>
+  <rect x="56" y="56" width="1488" height="788" rx="30" fill="#0A1730" stroke="#16395D"/>
+  <text x="112" y="144" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="34" font-weight="700">Architecture Overview</text>
+  <rect x="112" y="260" width="248" height="384" rx="28" fill="#102346"/>
+  <text x="144" y="318" fill="#8CD3FF" font-family="Arial, sans-serif" font-size="20">Layer 01</text>
+  <text x="144" y="376" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">Data + Training</text>
+  <text x="144" y="442" fill="#D8E5F2" font-family="Arial, sans-serif" font-size="20">Validation, preprocessing, feature engineering, and model comparison with recall-focused selection.</text>
+  <rect x="442" y="260" width="248" height="384" rx="28" fill="#102346"/>
+  <text x="474" y="318" fill="#8CD3FF" font-family="Arial, sans-serif" font-size="20">Layer 02</text>
+  <text x="474" y="376" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">Orchestration</text>
+  <text x="474" y="442" fill="#D8E5F2" font-family="Arial, sans-serif" font-size="20">Kubeflow pipelines, Jenkins automation, and repeatable MLOps flow coordination.</text>
+  <rect x="772" y="260" width="248" height="384" rx="28" fill="#102346"/>
+  <text x="804" y="318" fill="#8CD3FF" font-family="Arial, sans-serif" font-size="20">Layer 03</text>
+  <text x="804" y="376" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">Serving</text>
+  <text x="804" y="442" fill="#D8E5F2" font-family="Arial, sans-serif" font-size="20">FastAPI inference API deployed on Kubernetes with containerized training and serving images.</text>
+  <rect x="1102" y="260" width="330" height="384" rx="28" fill="#102346"/>
+  <text x="1134" y="318" fill="#8CD3FF" font-family="Arial, sans-serif" font-size="20">Layer 04</text>
+  <text x="1134" y="376" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="30" font-weight="700">Monitoring + Response</text>
+  <text x="1134" y="442" fill="#D8E5F2" font-family="Arial, sans-serif" font-size="20">Prometheus, Grafana, Alertmanager, drift scoring, and retraining triggers for production-style operation.</text>
+  <path d="M360 452H442" stroke="#1EE7D4" stroke-width="10" stroke-linecap="round"/>
+  <path d="M690 452H772" stroke="#1EE7D4" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1020 452H1102" stroke="#1EE7D4" stroke-width="10" stroke-linecap="round"/>
+</svg>

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/hero-banner.svg" alt="IEEE-CIS fraud detection MLOps platform hero" width="100%" />
+</p>
+
 # IEEE-CIS Fraud Detection MLOps Platform
 
 > A complete production-style MLOps solution for fraud detection, covering training, deployment, monitoring, drift detection, alerting, CI/CD, and explainability.
@@ -33,6 +37,8 @@ I built an end-to-end fraud detection MLOps system that includes:
 - Word report with evidence screenshots and requirement coverage
 
 ## Solution Architecture
+
+![Architecture overview](docs/architecture-overview.svg)
 
 ```text
 IEEE-CIS Data
