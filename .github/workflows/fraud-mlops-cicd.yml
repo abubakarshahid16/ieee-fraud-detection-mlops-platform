@@ -74,17 +74,6 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.API_IMAGE }}:${{ github.sha }}
 
-  deploy:
-    needs: build-and-package
-    runs-on: ubuntu-latest
-    if: github.event_name != 'pull_request'
-    steps:
-      - uses: actions/checkout@v4
-      - name: Trigger Kubeflow pipeline
-        run: echo "Trigger Kubeflow pipeline run through API or SDK here"
-      - name: Deploy inference service
-        run: echo "Apply Kubernetes manifests or update serving endpoint here"
-
   intelligent-retraining:
     if: github.event_name == 'repository_dispatch'
     runs-on: ubuntu-latest
