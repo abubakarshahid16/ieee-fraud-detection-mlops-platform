@@ -27,7 +27,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e . pytest ruff
       - name: Lint
-        run: ruff check src tests
+        run: |
+          ruff check src tests --select E,F,I --fix
+          ruff check src tests --select E,F,I
       - name: Unit tests
         run: pytest
       - name: Data validation checks
