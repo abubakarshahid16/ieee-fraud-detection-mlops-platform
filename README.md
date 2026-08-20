@@ -4,7 +4,9 @@
 
 # IEEE-CIS Fraud Detection MLOps Platform
 
-> A complete production-style MLOps solution for fraud detection, covering training, deployment, monitoring, drift detection, alerting, CI/CD, and explainability.
+> A reference MLOps platform for fraud detection, covering training, deployment patterns, monitoring, drift detection, alerting, CI/CD, and explainability.
+
+> **Evaluation status:** The stored selected XGBoost run achieves very high recall but has low precision and a high false-positive rate. It is research evidence, not production approval. Threshold selection, calibration, cost validation, and prospective testing are still required.
 
 ## Live Showcase
 
@@ -27,7 +29,7 @@ I built an end-to-end fraud detection MLOps system that includes:
 - Cost-sensitive learning to penalize false negatives
 - Precision, recall, F1-score, AUC-ROC, and confusion matrix evaluation
 - Time-based drift simulation and drift scoring
-- SHAP explainability for fraud predictions
+- Global SHAP attribution for model behavior and investigation support
 - FastAPI inference service with Prometheus metrics
 - Docker images for training and inference
 - Kubernetes deployment with namespace, quotas, PV/PVC, and service
@@ -67,15 +69,18 @@ Alertmanager -> Jenkins CI/CD Retraining Trigger
 
 ## Key Result
 
-The final real-data run selected:
+The stored real-data run selected:
 
 - Best model: `XGBoost`
 - Imbalance strategy: `class_weight`
 - Cost strategy: `cost_sensitive`
-- Recall: `0.999753937007874`
-- AUC-ROC: `0.8941891839491015`
+- Precision: `0.0349`
+- Recall: `0.9998`
+- F1-score: `0.0675`
+- AUC-ROC: `0.8942`
+- False-positive rate: `0.9851`
 
-This prioritizes catching fraud cases, which is the most important business objective in fraud detection.
+These metrics show the recall/alert-volume trade-off clearly. The run catches nearly every fraud case, but it also flags most legitimate transactions. The decision threshold is not recorded in the metrics artifact, so this result must not be treated as a deployable operating point. A production candidate needs threshold tuning against an explicit fraud-review capacity and cost matrix.
 
 ## Repository Structure
 
@@ -257,7 +262,7 @@ The system is designed for fraud-heavy business risk:
 - Cost-sensitive learning penalizes false negatives
 - Monitoring catches recall degradation and data drift
 - Alertmanager and Jenkins automate retraining triggers
-- SHAP explainability supports fraud investigation and audit review
+- Global SHAP attribution supports fraud investigation and audit review
 
 ## Notes
 
